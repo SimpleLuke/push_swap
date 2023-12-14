@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:28:38 by llai              #+#    #+#             */
-/*   Updated: 2023/12/14 11:35:31 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/14 14:17:45 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@
 
 int	main(int argc, char **argv)
 {
-	int	size;
+	int		size;
+	t_node	*first;
 
-	(void)argv;
 	if (argc < 2)
-		return (0);
-	size = stack_size(argv);
-	
+		return (-1);
+	check_valid_arg(argv + 1);
+	size = stack_size(argv + 1);
+	first = init_list(argv + 1, size);
+	push_swap(first, size);
 }
