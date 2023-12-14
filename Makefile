@@ -1,25 +1,34 @@
 NAME = push_swap
 CC = cc
 CFLAG = -Wall -Werror -Wextra
-SRC = push_swap.c
+SRC = push_swap.c \
+	  valid.c
 OBJ = $(SRC:.c=.o)
-HEADER = push_swap.h
+HEADER = push_swap.h \
+		 ./libft/libft.h
+LIBFT_PATH = ./libft
+LIBFT = $(LIBFT_PATH)/libft.a
 RM = rm -rf
 
 %.o:%.c
-	$(CC) $(CFLAG) -c -o $@ $<
+	$(CC) $(CFLAG) -c -o $@ $< -g
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAG) -o $(NAME) $(OBJ) -I$(HEADER)
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAG) $(OBJ) $(LIBFT) -o $(NAME)
+
+$(LIBFT):
+	make -C $(LIBFT_PATH) all
 
 clean:
+	make -C $(LIBFT_PATH) clean
 	$(RM) $(OBJ)
 
 fclean: clean
+	make -C $(LIBFT_PATH) fclean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft

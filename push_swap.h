@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/14 14:11:44 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/14 15:05:29 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdbool.h>
+# include "libft/libft.h"
 
 typedef struct s_node
 {
@@ -24,7 +26,7 @@ typedef struct s_node
 }	t_node;
 
 /* **************************************************************************
- * void	check_valid_arg(char **int_str)
+ * void	check_valid_arg(char **int_str, int len)
  *
  * Summary of the function:
  * 
@@ -36,7 +38,7 @@ typedef struct s_node
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	check_valid_arg(char **int_str);
+void	check_valid_arg(char **int_str, int len);
 
 /* **************************************************************************
  * size_t stack_size(char **int_str)
