@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:28:38 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 11:28:05 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 11:50:23 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	exit(EXIT_SUCCESS);
 }
 
-void	push_swap(t_node *head, t_node *tail)
+void	print_list(t_node *head, t_node *tail)
 {
 	//temp - print
 	t_node *curr = head->next;
@@ -53,4 +53,12 @@ void	push_swap(t_node *head, t_node *tail)
 		ft_printf("%d->", curr->value);
 		curr = curr->next;
 	}
+	ft_printf("\n");
+}
+
+void	push_swap(t_node *head, t_node *tail)
+{
+	print_list(head, tail);
+	swap_a(head);
+	print_list(head, tail);
 }
