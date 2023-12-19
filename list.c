@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:47 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 10:36:27 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 11:08:33 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -15,6 +15,7 @@ void	init_list(char **int_str, int len, t_node *head, t_node *tail);
 t_node	*create_new_node(int value);
 void	insert_front(int value, t_node *head);
 void	insert_end(int value, t_node *tail);
+void	free_list(t_node *head, t_node *tail);
 
 /* **************************************************************************
  * void	init_list(char **int_str, int len, t_node *head, t_node *tail)
@@ -33,8 +34,9 @@ void	init_list(char **int_str, int len, t_node *head, t_node *tail)
 {
 	int		i;
 
-	(void)head;
 	i = 0;
+	head->next = tail;
+	tail->prev = head;
 	while (i < len)
 	{
 		insert_end(ft_atoi(int_str[i]), tail);
@@ -113,4 +115,29 @@ void	insert_end(int value, t_node *tail)
 	new_node->prev = tail->prev;
 	tail->prev->next = new_node;
 	tail->prev = new_node;
+}
+/* **************************************************************************
+ * void	free_list(t_node *head)
+ *
+ * Summary of the function:
+ * 
+ * 	This function frees all the nodes in the list.
+ *
+ * Parameters : The head of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	free_list(t_node *head, t_node *tail)
+{
+	t_node *del_node;
+
+	while (head->next != tail)
+	{
+		head->next->next->prev = head;
+		del_node = head->next;
+		head->next = head->next->next;
+		free(del_node);
+	}
+	free(head);
+	free(tail);
 }

@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 10:34:59 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 11:06:28 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,20 @@ t_node	*create_new_node(int value);
 void	init_list(char **int_str, int len, t_node *head, t_node *tail);
 
 /* **************************************************************************
- * void	push_swap(t_node *first, size_t size)
+ * void	free_list(t_node *head)
+ *
+ * Summary of the function:
+ * 
+ * 	This function frees all the nodes in the list.
+ *
+ * Parameters : The head of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	free_list(t_node *head, t_node *tail);
+
+/* **************************************************************************
+ * void	push_swap(t_node *head, t_node *tail)
  *
  * Summary of the function:
  * 
@@ -95,6 +108,50 @@ void	init_list(char **int_str, int len, t_node *head, t_node *tail);
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	push_swap(t_node *first, size_t size);
+void	push_swap(t_node *head, t_node *tail);
 
+/* **************************************************************************
+ * void	swap_a(t_node *head)
+ *
+ * Summary of the function:
+ * 
+ * 	This function swaps the first 2 elements at the top of stack a.
+ * 	Do nothing if there is only one or no elements.
+ * 	It also prints out 'sa'.
+ *
+ * Parameters : The head node of the stack.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	swap_a(t_node *head);
+
+/* **************************************************************************
+ * void	swap_b(t_node *head)
+ *
+ * Summary of the function:
+ * 
+ * 	This function swaps the first 2 elements at the top of stack b.
+ * 	Do nothing if there is only one or no elements.
+ * 	It also prints out 'sb'.
+ *
+ * Parameters : The head node of the stack.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	swap_b(t_node *head);
+
+/* **************************************************************************
+ * void	swap_both(t_node *head_a, t_node *head_b)
+ *
+ * Summary of the function:
+ * 
+ * 	This function swaps the first 2 elements at the top of stack a & b.
+ * 	Do nothing if there is only one or no elements.
+ * 	It also prints out 'ss'.
+ *
+ * Parameters : The head node of the stacks.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	swap_both(t_node *head_a, t_node *head_b);
 #endif

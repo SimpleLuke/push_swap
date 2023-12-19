@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:28:38 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 10:35:24 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 11:05:52 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
  * ************************************************************************** */
 #include "push_swap.h"
 
+void	push_swap(t_node *head, t_node *tail);
+
 int	main(int argc, char **argv)
 {
 	t_node	*head;
@@ -35,14 +37,18 @@ int	main(int argc, char **argv)
 	check_valid_arg(argv + 1, argc - 1);
 	head = create_new_node(-1);
 	tail = create_new_node(-1);
-	head->next = tail;
-	tail->prev = head;
 	init_list(argv + 1, argc - 1, head, tail);
+	push_swap(head, tail);
+	free_list(head, tail);
+}
+
+void	push_swap(t_node *head, t_node *tail)
+{
+	//temp - print
 	t_node *curr = head->next;
 	while (curr != tail)
 	{
 		ft_printf("%d->", curr->value);
 		curr = curr->next;
 	}
-//	push_swap(first, size);
 }
