@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/14 15:05:29 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 10:34:59 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 typedef struct s_node
 {
 	int				value;
-	struct node_s	*prev;
-	struct node_s	*next;
+	struct s_node	*prev;
+	struct s_node	*next;
 }	t_node;
 
 /* **************************************************************************
@@ -55,7 +55,20 @@ void	check_valid_arg(char **int_str, int len);
 size_t	stack_size(char **int_str);
 
 /* **************************************************************************
- * t_node	*init_list(char **int_str, size_t size)
+ * t_node	*create_new_node(int value)
+ *
+ * Summary of the function:
+ * 
+ * 	This function creates and initialises a new node.
+ *
+ * Parameters : The value is an integer. 
+ *
+ * Return Value : It returns a new node.
+ * **************************************************************************/
+t_node	*create_new_node(int value);
+
+/* **************************************************************************
+ * t_node	*init_list(char **int_str, int len)
  *
  * Summary of the function:
  * 
@@ -63,26 +76,11 @@ size_t	stack_size(char **int_str);
  * 	It sets up a doubly linked list.
  *
  * Parameters : The arguments integers from the terminal 
- * 				(index 0 is programme name) and the size of the list.
+ * 				and the size of the list.
  *
  * Return Value : It returns the first node of the list.
  * **************************************************************************/
-t_node	*init_list(char **int_str, size_t size);
-
-/* **************************************************************************
- * t_node	*add_to_list(int value, t_node *prev, t_node *next)
- *
- * Summary of the function:
- * 
- * 	This function initialises the node in the doubly linked list.
- * 	It sets up the value and points to previous and next node.
- *
- * Parameters : The value is an integer. prev and node are pointing to
- * 				a node struct.
- *
- * Return Value : It returns a new node.
- * **************************************************************************/
-t_node	*add_to_list(int value, t_node *prev, t_node *next);
+void	init_list(char **int_str, int len, t_node *head, t_node *tail);
 
 /* **************************************************************************
  * void	push_swap(t_node *first, size_t size)

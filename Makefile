@@ -2,7 +2,8 @@ NAME = push_swap
 CC = cc
 CFLAG = -Wall -Werror -Wextra
 SRC = push_swap.c \
-	  valid.c
+	  valid.c \
+	  list.c
 OBJ = $(SRC:.c=.o)
 HEADER = push_swap.h \
 		 ./libft/libft.h
