@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:18:56 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 08:36:48 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 08:59:08 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 bool	check_numeric(char **int_str, int len);
 bool	check_duplicate(char **int_str);
-bool	check_integer(char **int_str);
+bool	check_integer(char **int_str, int len);
 
 /* **************************************************************************
  * void	check_valid_arg(char **int_str, int len)
@@ -39,7 +39,7 @@ bool	check_integer(char **int_str);
 void	check_valid_arg(char **int_str, int len)
 {
 	//if (!check_numeric(int_str) || !check_duplicate(int_str) || !check_integer(int_str))
-	if (!check_numeric(int_str, len))
+	if (!check_numeric(int_str, len) || !check_integer(int_str, len))
 	{
 		ft_printf("Error\n");
 		exit(EXIT_FAILURE);
@@ -91,9 +91,16 @@ bool check_numeric(char **int_str, int len)
  *
  * Return Value : It returns true or false.
  * **************************************************************************/
-/*
-bool	check_integer(char **int_str)
+bool	check_integer(char **int_str, int len)
 {
+	int			i;
 
+	i = 0;
+	while (i < len)
+	{
+		if (ft_atoll(int_str[i]) > INT_MAX || ft_atoll(int_str[i]) < INT_MIN)
+			return (false);
+		i++;
+	}
+	return (true);
 }
-*/

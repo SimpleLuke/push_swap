@@ -6,7 +6,7 @@
 #    By: llai <llai@student.42london.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 09:38:33 by llai              #+#    #+#              #
-#    Updated: 2023/12/19 08:19:21 by llai             ###   ########.fr        #
+#    Updated: 2023/12/19 08:58:32 by llai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,9 @@ SRC = ft_isalpha.c \
 	  ft_print_digit.c \
 	  ft_print_hex.c \
 	  ft_print_unsigned_dec.c \
-	  ft_print_ptr.c
+	  ft_print_ptr.c \
+	  ft_atol.c \
+	  ft_atoll.c
 BONUS_SRC = ft_lstnew.c \
 			ft_lstadd_front.c \
 			ft_lstsize.c \
