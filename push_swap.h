@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 11:06:28 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 11:15:56 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,25 @@ void	free_list(t_node *head, t_node *tail);
  * 	It excutes different sorting algorithms depends on the size
  * 	of the list.
  *
- * Parameters : The first node of the list and the size of the list
+ * Parameters : The head node and the tail node.
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
 void	push_swap(t_node *head, t_node *tail);
+
+/* **************************************************************************
+ * bool	is_sorted(t_node *head, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function checks if the nodes in the list are sorted
+ * 	from small to large.
+ *
+ * Parameters : The head node and the tail node.
+ *
+ * Return Value : It returns true or false.
+ * **************************************************************************/
+bool	is_sorted(t_node *head, t_node *tail);
 
 /* **************************************************************************
  * void	swap_a(t_node *head)
