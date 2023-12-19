@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:18:56 by llai              #+#    #+#             */
-/*   Updated: 2023/12/14 15:21:13 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 08:36:48 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_valid_arg(char **int_str, int len)
 	//if (!check_numeric(int_str) || !check_duplicate(int_str) || !check_integer(int_str))
 	if (!check_numeric(int_str, len))
 	{
-		write(1, "Error\n", 6);
+		ft_printf("Error\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -66,6 +66,8 @@ bool check_numeric(char **int_str, int len)
 	while (i < len)
 	{
 		j = 0;
+		if (int_str[i][j] == '-' || int_str[i][j] == '+')
+			j++;
 		while (int_str[i][j])
 		{
 			if (!ft_isdigit(int_str[i][j]))
@@ -76,3 +78,22 @@ bool check_numeric(char **int_str, int len)
 	}
 	return (true);
 }
+
+
+/* **************************************************************************
+ * bool	check_integer(char **int_str, int len)
+ *
+ * Summary of the function:
+ * 
+ * 	This function checks if the array of string are valid integer.
+ *
+ * Parameters : A array of string.
+ *
+ * Return Value : It returns true or false.
+ * **************************************************************************/
+/*
+bool	check_integer(char **int_str)
+{
+
+}
+*/
