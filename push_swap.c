@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:28:38 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 11:50:23 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 13:05:55 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  * ************************************************************************** */
 #include "push_swap.h"
 
-void	push_swap(t_node *head, t_node *tail);
+void	push_swap(t_node *head_a, t_node *tail_a);
 
 int	main(int argc, char **argv)
 {
@@ -56,9 +56,25 @@ void	print_list(t_node *head, t_node *tail)
 	ft_printf("\n");
 }
 
-void	push_swap(t_node *head, t_node *tail)
+void	push_swap(t_node *head_a, t_node *tail_a)
 {
-	print_list(head, tail);
-	swap_a(head);
-	print_list(head, tail);
+	t_node	*head_b;
+	t_node	*tail_b;
+
+	head_b = create_new_node(-1);
+	tail_b = create_new_node(-1);
+	head_b->next = tail_b;
+	tail_b->prev = head_b;
+	ft_printf("Before\n");
+	print_list(head_a, tail_a);
+	print_list(head_b, tail_b);
+	push_b(head_a, head_b, tail_a);
+	ft_printf("After1\n");
+	print_list(head_a, tail_a);
+	print_list(head_b, tail_b);
+	push_a(head_a, head_b, tail_b);
+	ft_printf("After2\n");
+	print_list(head_a, tail_a);
+	print_list(head_b, tail_b);
+	free_list(head_b, tail_b);
 }

@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 11:15:56 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 13:00:28 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,49 @@ t_node	*create_new_node(int value);
  * Return Value : It returns the first node of the list.
  * **************************************************************************/
 void	init_list(char **int_str, int len, t_node *head, t_node *tail);
+
+/* **************************************************************************
+ * void	insert_front(int value, t_node *head)
+ *
+ * Summary of the function:
+ * 
+ * 	This function initialises the node in the doubly linked list.
+ * 	It sets up the value and add the node to the front of the list.
+ *
+ * Parameters : The value is an integer. prev and node are pointing to
+ * 				a node struct.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	insert_front(int value, t_node *head);
+
+/* **************************************************************************
+ * void	insert_end(int value, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function initialises the node in the doubly linked list.
+ * 	It sets up the value and add the node to the end of the list.
+ *
+ * Parameters : The value is an integer. prev and node are pointing to
+ * 				a node struct.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	insert_end(int value, t_node *tail);
+
+/* **************************************************************************
+ * void	remove_front(t_node *head)
+ *
+ * Summary of the function:
+ * 
+ * 	This function removes the node in the front of the list.
+ *
+ * Parameters : The head node of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	remove_front(t_node *head);
 
 /* **************************************************************************
  * void	free_list(t_node *head)
@@ -168,4 +211,35 @@ void	swap_b(t_node *head);
  * Return Value : It returns nothing.
  * **************************************************************************/
 void	swap_both(t_node *head_a, t_node *head_b);
+
+/* **************************************************************************
+ * void	push_a(t_node *head_a, t_node *head_b)
+ *
+ * Summary of the function:
+ * 
+ * 	This function pushes the first element at the top of b
+ * 	and put it at the top of a.
+ * 	Do nothing if b is empty.
+ *
+ * Parameters : The head node of the stacks.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	push_a(t_node *head_a, t_node *head_b, t_node *tail_b);
+
+/* **************************************************************************
+ * void	push_b(t_node *head_a, t_node *head_b)
+ *
+ * Summary of the function:
+ * 
+ * 	This function pushes the first element at the top of a
+ * 	and put it at the top of b.
+ * 	Do nothing if a is empty.
+ *
+ * Parameters : The head node of the stacks.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	push_b(t_node *head_a, t_node *head_b, t_node *tail_a);
+
 #endif

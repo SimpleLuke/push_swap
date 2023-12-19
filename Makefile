@@ -4,8 +4,10 @@ CFLAG = -Wall -Werror -Wextra
 SRC = push_swap.c \
 	  valid.c \
 	  list.c \
+	  list_utils.c \
 	  compare.c \
-	  swap.c
+	  swap.c \
+	  push.c
 OBJ = $(SRC:.c=.o)
 HEADER = push_swap.h \
 		 ./libft/libft.h

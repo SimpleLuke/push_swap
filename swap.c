@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:45:53 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 11:52:25 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 13:02:30 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -30,7 +30,7 @@ void	swap_both(t_node *head_a, t_node *head_b);
  * **************************************************************************/
 void	swap_a(t_node *head)
 {
-	t_node *	temp;
+	t_node	*temp;
 
 	temp = head->next;
 	head->next->next->prev = head;
@@ -57,7 +57,7 @@ void	swap_a(t_node *head)
  * **************************************************************************/
 void	swap_b(t_node *head)
 {
-	t_node *	temp;
+	t_node	*temp;
 
 	temp = head->next;
 	head->next->next->prev = head;
