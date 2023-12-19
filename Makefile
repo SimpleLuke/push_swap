@@ -7,7 +7,8 @@ SRC = push_swap.c \
 	  list_utils.c \
 	  compare.c \
 	  swap.c \
-	  push.c
+	  push.c \
+	  rotate.c
 OBJ = $(SRC:.c=.o)
 HEADER = push_swap.h \
 		 ./libft/libft.h

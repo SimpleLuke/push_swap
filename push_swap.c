@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:28:38 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 13:05:55 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 18:45:20 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,18 @@ void	push_swap(t_node *head_a, t_node *tail_a)
 	ft_printf("Before\n");
 	print_list(head_a, tail_a);
 	print_list(head_b, tail_b);
+
 	push_b(head_a, head_b, tail_a);
-	ft_printf("After1\n");
 	print_list(head_a, tail_a);
 	print_list(head_b, tail_b);
-	push_a(head_a, head_b, tail_b);
-	ft_printf("After2\n");
+
+	push_b(head_a, head_b, tail_a);
 	print_list(head_a, tail_a);
 	print_list(head_b, tail_b);
+
+	rotate_both(head_a, tail_a, head_b, tail_b);
+	print_list(head_a, tail_a);
+	print_list(head_b, tail_b);
+
 	free_list(head_b, tail_b);
 }

@@ -6,13 +6,13 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:45:53 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 13:02:30 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 15:56:38 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	swap_a(t_node *head);
-void	swap_b(t_node *head);
+void	swap_a(t_node *head, bool is_print);
+void	swap_b(t_node *head, bool is_print);
 void	swap_both(t_node *head_a, t_node *head_b);
 
 /* **************************************************************************
@@ -28,7 +28,7 @@ void	swap_both(t_node *head_a, t_node *head_b);
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	swap_a(t_node *head)
+void	swap_a(t_node *head, bool is_print)
 {
 	t_node	*temp;
 
@@ -39,7 +39,8 @@ void	swap_a(t_node *head)
 	temp->prev = head->next;
 	head->next->next->prev = temp;
 	head->next->next = temp;
-	ft_printf("sa\n");
+	if (is_print)
+		ft_printf("sa\n");
 }
 
 /* **************************************************************************
@@ -55,7 +56,7 @@ void	swap_a(t_node *head)
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	swap_b(t_node *head)
+void	swap_b(t_node *head, bool is_print)
 {
 	t_node	*temp;
 
@@ -66,7 +67,8 @@ void	swap_b(t_node *head)
 	temp->prev = head->next;
 	head->next->next->prev = temp;
 	head->next->next = temp;
-	ft_printf("sb\n");
+	if (is_print)
+		ft_printf("sb\n");
 }
 
 /* **************************************************************************
@@ -84,6 +86,7 @@ void	swap_b(t_node *head)
  * **************************************************************************/
 void	swap_both(t_node *head_a, t_node *head_b)
 {
-	swap_a(head_a);
-	swap_b(head_b);
+	swap_a(head_a, false);
+	swap_b(head_b, false);
+	ft_printf("ss\n");
 }

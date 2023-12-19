@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 13:00:28 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 15:53:02 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void	push_swap(t_node *head, t_node *tail);
 bool	is_sorted(t_node *head, t_node *tail);
 
 /* **************************************************************************
- * void	swap_a(t_node *head)
+ * void	swap_a(t_node *head, bool is_print)
  *
  * Summary of the function:
  * 
@@ -180,10 +180,10 @@ bool	is_sorted(t_node *head, t_node *tail);
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	swap_a(t_node *head);
+void	swap_a(t_node *head, bool is_print);
 
 /* **************************************************************************
- * void	swap_b(t_node *head)
+ * void	swap_b(t_node *head, bool is_print)
  *
  * Summary of the function:
  * 
@@ -195,7 +195,7 @@ void	swap_a(t_node *head);
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	swap_b(t_node *head);
+void	swap_b(t_node *head, bool is_print);
 
 /* **************************************************************************
  * void	swap_both(t_node *head_a, t_node *head_b)
@@ -213,13 +213,14 @@ void	swap_b(t_node *head);
 void	swap_both(t_node *head_a, t_node *head_b);
 
 /* **************************************************************************
- * void	push_a(t_node *head_a, t_node *head_b)
+ * void	push_a(t_node *head_a, t_node *head_b, t_node *tail_b)
  *
  * Summary of the function:
  * 
  * 	This function pushes the first element at the top of b
  * 	and put it at the top of a.
  * 	Do nothing if b is empty.
+ * 	Display "pa";
  *
  * Parameters : The head node of the stacks.
  *
@@ -228,18 +229,64 @@ void	swap_both(t_node *head_a, t_node *head_b);
 void	push_a(t_node *head_a, t_node *head_b, t_node *tail_b);
 
 /* **************************************************************************
- * void	push_b(t_node *head_a, t_node *head_b)
+ * void	push_b(t_node *head_a, t_node *head_b, t_node *tail_a);
  *
  * Summary of the function:
  * 
  * 	This function pushes the first element at the top of a
  * 	and put it at the top of b.
  * 	Do nothing if a is empty.
+ * 	Display "pb";
  *
  * Parameters : The head node of the stacks.
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
 void	push_b(t_node *head_a, t_node *head_b, t_node *tail_a);
+
+/* **************************************************************************
+ * void	rotate_a(t_node *head_a, t_node *tail_a, bool is_print)
+ *
+ * Summary of the function:
+ * 
+ * 	This function shifts up all elements of stack a by 1.
+ * 	The first element becomes the last one.
+ * 	Display "ra";
+ *
+ * Parameters : The head node of the stack.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	rotate_a(t_node *head_a, t_node *tail_a, bool is_print);
+
+/* **************************************************************************
+ * void	rotate_b(t_node *head_b, t_node *tail_b, bool is_print)
+ *
+ * Summary of the function:
+ * 
+ * 	This function shifts up all elements of stack b by 1.
+ * 	The first element becomes the last one.
+ * 	Display "rb";
+ *
+ * Parameters : The head node of the stack.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	rotate_b(t_node *head_b, t_node *tail_b, bool is_print);
+
+/* **************************************************************************
+ * void	rotate_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
+ *
+ * Summary of the function:
+ * 
+ * 	This function shifts up all elements of stack a & b by 1.
+ * 	The first element becomes the last one.
+ * 	Display "rr";
+ *
+ * Parameters : The head node of the stack.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	rotate_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
 
 #endif
