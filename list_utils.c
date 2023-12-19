@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 13:03:16 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 13:05:33 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 18:57:00 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	insert_front(int value, t_node *head);
 void	insert_end(int value, t_node *tail);
 void	remove_front(t_node *head);
+void	remove_end(t_node *tail);
 void	free_list(t_node *head, t_node *tail);
 
 /* **************************************************************************
@@ -80,6 +81,23 @@ void	remove_front(t_node *head)
 {
 	head->next->next->prev = head;
 	head->next = head->next->next;
+}
+
+/* **************************************************************************
+ * void	remove_end(t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function removes the node in the end of the list.
+ *
+ * Parameters : The tail node of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	remove_end(t_node *tail)
+{
+	tail->prev->prev->next = tail;
+	tail->prev = tail->prev->prev;
 }
 
 /* **************************************************************************

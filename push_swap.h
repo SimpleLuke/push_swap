@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 15:53:02 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 18:57:24 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,19 @@ void	insert_end(int value, t_node *tail);
  * Return Value : It returns nothing.
  * **************************************************************************/
 void	remove_front(t_node *head);
+
+/* **************************************************************************
+ * void	remove_end(t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function removes the node in the end of the list.
+ *
+ * Parameters : The tail node of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	remove_end(t_node *tail);
 
 /* **************************************************************************
  * void	free_list(t_node *head)
@@ -288,5 +301,50 @@ void	rotate_b(t_node *head_b, t_node *tail_b, bool is_print);
  * Return Value : It returns nothing.
  * **************************************************************************/
 void	rotate_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
+
+/* **************************************************************************
+ * void	rotate_rev_a(t_node *head_a, t_node *tail_a, bool is_print)
+ *
+ * Summary of the function:
+ * 
+ * 	This function shifts down all elements of stack a by 1.
+ * 	The last element becomes the first one.
+ * 	Display "rra";
+ *
+ * Parameters : The head node of the stack.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	rotate_rev_a(t_node *head_a, t_node *tail_a, bool is_print);
+
+/* **************************************************************************
+ * void	rotate_rev_b(t_node *head_b, t_node *tail_b, bool is_print)
+ *
+ * Summary of the function:
+ * 
+ * 	This function shifts down all elements of stack b by 1.
+ * 	The last element becomes the first one.
+ * 	Display "rrb";
+ *
+ * Parameters : The head node of the stack.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	rotate_rev_b(t_node *head_b, t_node *tail_b, bool is_print);
+
+/* **************************************************************************
+ * void	rotate_rev_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
+ *
+ * Summary of the function:
+ * 
+ * 	This function shifts down all elements of stack a & b by 1.
+ * 	The last element becomes the first one.
+ * 	Display "rrr";
+ *
+ * Parameters : The head node of the stack.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	rotate_rev_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
 
 #endif
