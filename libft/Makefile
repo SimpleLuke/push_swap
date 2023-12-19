@@ -6,7 +6,7 @@
 #    By: llai <llai@student.42london.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 09:38:33 by llai              #+#    #+#              #
-#    Updated: 2023/11/08 18:27:36 by llai             ###   ########.fr        #
+#    Updated: 2023/12/19 08:19:21 by llai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,15 @@ SRC = ft_isalpha.c \
       ft_putchar_fd.c \
       ft_putstr_fd.c \
       ft_putendl_fd.c \
-      ft_putnbr_fd.c
+      ft_putnbr_fd.c \
+	  ft_printf.c \
+	  ft_print_char.c \
+	  ft_flags_utils.c \
+	  ft_print_str.c \
+	  ft_print_digit.c \
+	  ft_print_hex.c \
+	  ft_print_unsigned_dec.c \
+	  ft_print_ptr.c
 BONUS_SRC = ft_lstnew.c \
 			ft_lstadd_front.c \
 			ft_lstsize.c \
@@ -63,7 +71,7 @@ BONUS_OBJS = $(BONUS_SRC:.c=.o)
 %.o: %.c 
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(BONUS_OBJS)
 	$(AR) $@ $^
 
 bonus: $(OBJS) $(BONUS_OBJS)

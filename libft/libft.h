@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 19:15:44 by llai              #+#    #+#             */
-/*   Updated: 2023/11/08 14:24:02 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/19 08:22:59 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,23 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdarg.h>
+# include <stdio.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+# if defined (__linux__)
+#  define PTRNULL "(nil)"
+# elif defined (__APPLE__)
+#  define PTRNULL "0x0"
+# endif
+
+# define ISLOWER 0
+# define ISUPPER 1
 
 /* ----- Char ----- */
 int		ft_isalpha(int c);
@@ -78,5 +89,63 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/* ************************************************************************** */
+/*  ft_printf: Takes a string of format and arguments,                        */
+/*             output a formatted string on stdout.                           */
+/*             Returns the number of output characters.                       */
+/* ************************************************************************** */
+int	ft_printf(const char *format, ...);
+
+/* ************************************************************************** */
+/*  ft_istype: Takes an integer character,                                    */
+/*             Returns 1 if it is one of the flags.                           */
+/*             Returns 0 if it is not one of the flags.                       */
+/* ************************************************************************** */
+int	ft_istype(int c);
+
+/* ************************************************************************** */
+/*  ft_print_c: Takes a character and output on stdout.                       */
+/*              Returns a count of 1.                                         */
+/* ************************************************************************** */
+int	ft_print_c(char c);
+
+/* ************************************************************************** */
+/*  ft_print_str: Takes a string (a pointer to a constant char).              */
+/*                Output (null) if there is no string,                        */
+/*                Otherwise, output the string.                               */
+/*                Returns the count of the string.                            */
+/* ************************************************************************** */
+int	ft_print_str(const char *str);
+
+/* ************************************************************************** */
+/*  ft_print_digit: Takes an integer and convert it to a string.              */
+/*                  Output the string on stdout.                              */
+/*                  Returns the count of the string.                          */
+/* ************************************************************************** */
+int	ft_print_digit(int n);
+
+/* ************************************************************************** */
+/*  ft_print_hex: Takes an unsigned integer and depends if it is upper case,  */
+/*                convert the integer to hexadecimal.                         */
+/*                Output hexadecimal string on stdout.                        */
+/*                Returns the count of the string.                            */
+/* ************************************************************************** */
+int	ft_print_hex(unsigned int n, int isupper);
+
+/* ************************************************************************** */
+/*  ft_print_unsigned_dec: Takes an unsigned integer,                         */
+/*                         converts it to a string and output on stdout.      */
+/*                         Returns the count of the string.                   */
+/* ************************************************************************** */
+int	ft_print_unsigned_dec(unsigned int n);
+
+/* ************************************************************************** */
+/*  ft_print_ptr: Takes an unsigned long integer,                             */
+/*                output null pointer if it is zero.                          */
+/*                Otherwise, it outputs hexadecimal format.                   */
+/*                Returns the count of the output string.                     */
+/* ************************************************************************** */
+int	ft_print_ptr(unsigned long int n);
 
 #endif
