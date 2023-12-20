@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:12:58 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 15:12:00 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 16:16:42 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -112,7 +112,7 @@ bool	is_reverse(t_node *head, t_node *tail, int smallest)
 	{
 		count++;
 		if (curr->value <= smallest)
-			break;
+			break ;
 		curr = curr->next;
 	}
 	return (count < sum / 2);

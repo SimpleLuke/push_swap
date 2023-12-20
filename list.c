@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:47 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 12:07:52 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 16:17:35 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -68,7 +68,7 @@ t_node	*create_new_node(int value)
 	return (new_node);
 }
 
-int		smallest_in_list(t_node *head, t_node *tail)
+int	smallest_in_list(t_node *head, t_node *tail)
 {
 	t_node	*curr;
 	int		smallest;
@@ -77,14 +77,14 @@ int		smallest_in_list(t_node *head, t_node *tail)
 	smallest = curr->value;
 	while (curr != tail)
 	{
-		if(curr->value <= smallest)
+		if (curr->value <= smallest)
 			smallest = curr->value;
 		curr = curr->next;
 	}
 	return (smallest);
 }
 
-int		largest_in_list(t_node *head, t_node *tail)
+int	largest_in_list(t_node *head, t_node *tail)
 {
 	t_node	*curr;
 	int		largest;
@@ -93,7 +93,7 @@ int		largest_in_list(t_node *head, t_node *tail)
 	largest = curr->value;
 	while (curr != tail)
 	{
-		if(curr->value >= largest)
+		if (curr->value >= largest)
 			largest = curr->value;
 		curr = curr->next;
 	}
