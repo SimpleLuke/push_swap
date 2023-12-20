@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 08:50:12 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 09:24:37 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 09:47:42 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,43 @@
 
 #include "push_swap.h"
 
+static void	sa_ra(t_node *head, t_node *tail);
+static void	sa_rra(t_node *head, t_node *tail);
+
 void	sort_small_size(t_node *head, t_node *tail)
 {
 	t_node	*top;
-	t_node	*middle;
-	t_node	*bottom;
+	t_node	*mid;
+	t_node	*bot;
 
 	top = head->next;
-	middle = head->next->next;
-	bottom = head->next->next->next;
-
-	if (bottom == tail && cmp_nodes(top, middle))
+	mid = head->next->next;
+	bot = head->next->next->next;
+	if (bot == tail && cmp(top, mid))
+	{
 		swap_a(head, 1);
+		return ;
+	}
+	if (!cmp(top, mid) && cmp(mid, bot) && !cmp(bot, top))
+		rotate_rev_a(head, tail, 1);
+	else if (cmp(top, mid) && !cmp(mid, bot) && !cmp(bot, top))
+		rotate_a(head, tail, 1);
+	else if (cmp(top, mid) && !cmp(mid, bot) && cmp(bot, top))
+		swap_a(head, 1);
+	else if (!cmp(top, mid) && cmp(mid, bot) && cmp(bot, top))
+		sa_ra(head, tail);
+	else if (cmp(top, mid) && cmp(mid, bot) && !cmp(bot, top))
+		sa_rra(head, tail);
+}
+
+static void	sa_ra(t_node *head, t_node *tail)
+{
+	swap_a(head, 1);
+	rotate_a(head, tail, 1);
+}
+
+static void	sa_rra(t_node *head, t_node *tail)
+{
+	swap_a(head, 1);
+	rotate_rev_a(head, tail, 1);
 }

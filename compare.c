@@ -6,13 +6,13 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:12:58 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 09:02:19 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 09:36:52 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 bool	is_sorted(t_node *head, t_node *tail);
-bool	cmp_nodes(t_node *node_1, t_node *node_2);
+bool	cmp(t_node *node_1, t_node *node_2);
 
 /* **************************************************************************
  * bool	is_sorted(t_node *head, t_node *tail)
@@ -41,7 +41,7 @@ bool	is_sorted(t_node *head, t_node *tail)
 }
 
 /* **************************************************************************
- * bool	cmp_nodes(t_node *node_1, t_node *node_2)
+ * bool	cmp(t_node *node_1, t_node *node_2)
  *
  * Summary of the function:
  * 
@@ -51,7 +51,7 @@ bool	is_sorted(t_node *head, t_node *tail)
  *
  * Return Value : It returns true or false.
  * **************************************************************************/
-bool	cmp_nodes(t_node *node_1, t_node *node_2)
+bool	cmp(t_node *node_1, t_node *node_2)
 {
 	if (node_1->value > node_2->value)
 		return (true);

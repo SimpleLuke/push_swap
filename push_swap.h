@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 09:13:14 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 09:49:11 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ void	push_swap(t_node *head, t_node *tail, int len);
 bool	is_sorted(t_node *head, t_node *tail);
 
 /* **************************************************************************
- * bool	cmp_nodes(t_node *node_1, t_node *node_2)
+ * bool	cmp(t_node *node_1, t_node *node_2)
  *
  * Summary of the function:
  * 
@@ -191,7 +191,7 @@ bool	is_sorted(t_node *head, t_node *tail);
  *
  * Return Value : It returns true or false.
  * **************************************************************************/
-bool	cmp_nodes(t_node *node_1, t_node *node_2);
+bool	cmp(t_node *node_1, t_node *node_2);
 
 /* **************************************************************************
  * void	swap_a(t_node *head, bool is_print)
@@ -301,7 +301,8 @@ void	rotate_a(t_node *head_a, t_node *tail_a, bool is_print);
 void	rotate_b(t_node *head_b, t_node *tail_b, bool is_print);
 
 /* **************************************************************************
- * void	rotate_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
+ * void	rotate_both(t_node *head_a, t_node *tail_a, 
+ * 					t_node *head_b, t_node *tail_b);
  *
  * Summary of the function:
  * 
@@ -313,7 +314,8 @@ void	rotate_b(t_node *head_b, t_node *tail_b, bool is_print);
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	rotate_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
+void	rotate_both(t_node *head_a, t_node *tail_a,
+			t_node *head_b, t_node *tail_b);
 
 /* **************************************************************************
  * void	rotate_rev_a(t_node *head_a, t_node *tail_a, bool is_print)
@@ -346,7 +348,8 @@ void	rotate_rev_a(t_node *head_a, t_node *tail_a, bool is_print);
 void	rotate_rev_b(t_node *head_b, t_node *tail_b, bool is_print);
 
 /* **************************************************************************
- * void	rotate_rev_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
+ * void	rotate_rev_both(t_node *head_a, t_node *tail_a, 
+ * 						t_node *head_b, t_node *tail_b);
  *
  * Summary of the function:
  * 
@@ -358,7 +361,8 @@ void	rotate_rev_b(t_node *head_b, t_node *tail_b, bool is_print);
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	rotate_rev_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
+void	rotate_rev_both(t_node *head_a, t_node *tail_a,
+			t_node *head_b, t_node *tail_b);
 
 /* **************************************************************************
  * void	sort_small_size(t_node *head, t_node *tail)
