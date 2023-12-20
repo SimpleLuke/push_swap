@@ -6,10 +6,9 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 21:03:31 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 21:04:56 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 21:10:30 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -47,9 +46,8 @@ bool	is_reverse_between(t_node *head, t_node *tail, int num)
 	{
 		count++;
 		if ((curr->value < num && curr->next->value > num))
-			break;
-		else
-			curr = curr->next;
+			break ;
+		curr = curr->next;
 	}
 	if (count > sum - count)
 		return (true);
@@ -87,7 +85,7 @@ bool	is_reverse_small(t_node *head, t_node *tail, int smallest)
 	while (curr->next != tail)
 	{
 		if (curr->value == smallest)
-			break;
+			break ;
 		count++;
 		curr = curr->next;
 	}
