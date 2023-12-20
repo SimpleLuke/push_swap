@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:28:38 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 18:57:47 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 09:14:17 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  * ************************************************************************** */
 #include "push_swap.h"
 
-void	push_swap(t_node *head_a, t_node *tail_a);
+void	push_swap(t_node *head_a, t_node *tail_a, int len);
 
 int	main(int argc, char **argv)
 {
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	tail = create_new_node(-1);
 	init_list(argv + 1, argc - 1, head, tail);
 	if (!is_sorted(head, tail))
-		push_swap(head, tail);
+		push_swap(head, tail, argc - 1);
 	free_list(head, tail);
 	exit(EXIT_SUCCESS);
 }
@@ -56,7 +56,7 @@ void	print_list(t_node *head, t_node *tail)
 	ft_printf("\n");
 }
 
-void	push_swap(t_node *head_a, t_node *tail_a)
+void	push_swap(t_node *head_a, t_node *tail_a, int len)
 {
 	t_node	*head_b;
 	t_node	*tail_b;
@@ -65,6 +65,7 @@ void	push_swap(t_node *head_a, t_node *tail_a)
 	tail_b = create_new_node(-1);
 	head_b->next = tail_b;
 	tail_b->prev = head_b;
+	/*
 	ft_printf("Before\n");
 	print_list(head_a, tail_a);
 	print_list(head_b, tail_b);
@@ -84,6 +85,11 @@ void	push_swap(t_node *head_a, t_node *tail_a)
 	rotate_rev_both(head_a, tail_a, head_b, tail_b);
 	print_list(head_a, tail_a);
 	print_list(head_b, tail_b);
-
+	*/
+	if (len <= 3)
+		sort_small_size(head_a, tail_a);
+	ft_printf("DONE:\n");
+	print_list(head_a, tail_a);
+	print_list(head_b, tail_b);
 	free_list(head_b, tail_b);
 }

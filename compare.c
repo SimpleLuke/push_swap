@@ -6,12 +6,13 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:12:58 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 11:28:18 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 09:02:19 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 bool	is_sorted(t_node *head, t_node *tail);
+bool	cmp_nodes(t_node *node_1, t_node *node_2);
 
 /* **************************************************************************
  * bool	is_sorted(t_node *head, t_node *tail)
@@ -37,4 +38,25 @@ bool	is_sorted(t_node *head, t_node *tail)
 		curr = curr->next;
 	}
 	return (true);
+}
+
+/* **************************************************************************
+ * bool	cmp_nodes(t_node *node_1, t_node *node_2)
+ *
+ * Summary of the function:
+ * 
+ * 	This function checks if node_1 is bigger than node_2
+ *
+ * Parameters : The two nodes in the list.
+ *
+ * Return Value : It returns true or false.
+ * **************************************************************************/
+bool	cmp_nodes(t_node *node_1, t_node *node_2)
+{
+	if (node_1->value > node_2->value)
+		return (true);
+	else if (node_2->value > node_1->value)
+		return (false);
+	else
+		exit(EXIT_FAILURE);
 }

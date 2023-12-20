@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 18:57:24 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 09:13:14 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void	remove_end(t_node *tail);
 void	free_list(t_node *head, t_node *tail);
 
 /* **************************************************************************
- * void	push_swap(t_node *head, t_node *tail)
+ * void	push_swap(t_node *head, t_node *tail, int len)
  *
  * Summary of the function:
  * 
@@ -164,7 +164,7 @@ void	free_list(t_node *head, t_node *tail);
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	push_swap(t_node *head, t_node *tail);
+void	push_swap(t_node *head, t_node *tail, int len);
 
 /* **************************************************************************
  * bool	is_sorted(t_node *head, t_node *tail)
@@ -179,6 +179,19 @@ void	push_swap(t_node *head, t_node *tail);
  * Return Value : It returns true or false.
  * **************************************************************************/
 bool	is_sorted(t_node *head, t_node *tail);
+
+/* **************************************************************************
+ * bool	cmp_nodes(t_node *node_1, t_node *node_2)
+ *
+ * Summary of the function:
+ * 
+ * 	This function checks if node_1 is bigger than node_2
+ *
+ * Parameters : The two nodes in the list.
+ *
+ * Return Value : It returns true or false.
+ * **************************************************************************/
+bool	cmp_nodes(t_node *node_1, t_node *node_2);
 
 /* **************************************************************************
  * void	swap_a(t_node *head, bool is_print)
@@ -346,5 +359,19 @@ void	rotate_rev_b(t_node *head_b, t_node *tail_b, bool is_print);
  * Return Value : It returns nothing.
  * **************************************************************************/
 void	rotate_rev_both(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
+
+/* **************************************************************************
+ * void	sort_small_size(t_node *head, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function sorts a list with a size of three or less.
+ * 	It outputs the operation intrustions.
+ *
+ * Parameters : The head node and the tail node of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	sort_small_size(t_node *head, t_node *tail);
 
 #endif
