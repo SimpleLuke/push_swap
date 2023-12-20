@@ -10,6 +10,7 @@ SRC = push_swap.c \
 	  push.c \
 	  rotate.c \
 	  rotate_rev.c \
+	  reverse.c \
 	  small_size.c \
 	  mid_size.c
 OBJ = $(SRC:.c=.o)

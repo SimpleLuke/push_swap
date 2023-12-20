@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:12:58 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 16:27:33 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 20:56:22 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -15,7 +15,6 @@ bool	is_sorted(t_node *head, t_node *tail);
 bool	cmp(t_node *node_1, t_node *node_2);
 bool	is_smallest(t_node *head, t_node *tail, t_node *node);
 bool	is_largest(t_node *head, t_node *tail, t_node *node);
-bool	is_reverse(t_node *head, t_node *tail, int smallest);
 
 /* **************************************************************************
  * bool	is_sorted(t_node *head, t_node *tail)
@@ -112,41 +111,4 @@ bool	is_largest(t_node *head, t_node *tail, t_node *node)
 		curr = curr->next;
 	}
 	return (true);
-}
-
-/* **************************************************************************
- * bool	is_reverse(t_node *head, t_node *tail, int smallest)
- *
- * Summary of the function:
- * 
- * 	This function checks if the rotation needs to be reverse rotating.
- *
- * Parameters : The head and tail nodes in the list and the number to determine.
- *
- * Return Value : It returns true or false.
- * **************************************************************************/
-bool	is_reverse(t_node *head, t_node *tail, int smallest)
-{
-	t_node	*curr;
-	t_node	*pointer;
-	int		count;
-	int		sum;
-
-	count = 0;
-	sum = 0;
-	curr = head->next;
-	pointer = head->next;
-	while (pointer != tail)
-	{
-		sum++;
-		pointer = pointer->next;
-	}
-	while (curr != tail)
-	{
-		count++;
-		if (curr->value <= smallest)
-			break ;
-		curr = curr->next;
-	}
-	return (count < sum / 2);
 }

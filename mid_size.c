@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 08:50:12 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 16:38:55 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 21:05:21 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,13 @@ void	sort_largest(t_node *head_a, t_node *head_b,
 	int	smallest;
 
 	smallest = smallest_in_list(head_a, tail_a);
-	while (head_a->next->value != smallest)
-		rotate_rev_a(head_a, tail_a, 1);
+	if (is_reverse_small(head_a, tail_a, smallest))
+		while (head_a->next->value != smallest)
+			rotate_rev_a(head_a, tail_a, 1);
+	else
+		while (head_a->next->value != smallest)
+			rotate_a(head_a, tail_a, 1);
 	push_a(head_a, head_b, tail_b);
-	rotate_a(head_a, tail_a, 1);
 }
 
 /* **************************************************************************
@@ -111,8 +114,12 @@ void	sort_smallest(t_node *head_a, t_node *head_b,
 	int	smallest;
 
 	smallest = smallest_in_list(head_a, tail_a);
-	while (head_a->next->value != smallest)
-		rotate_rev_a(head_a, tail_a, 1);
+	if (is_reverse_small(head_a, tail_a, smallest))
+		while (head_a->next->value != smallest)
+			rotate_rev_a(head_a, tail_a, 1);
+	else
+		while (head_a->next->value != smallest)
+			rotate_a(head_a, tail_a, 1);
 	push_a(head_a, head_b, tail_b);
 }
 
@@ -132,15 +139,24 @@ void	sort_smallest(t_node *head_a, t_node *head_b,
 void	sort_other(t_node *head_a, t_node *head_b,
 			t_node *tail_a,	t_node *tail_b)
 {
-	if (is_reverse(head_a, tail_a, head_b->next->value))
+	if (is_reverse_between(head_a, tail_a, head_b->next->value))
+		while (!(head_a->next->value > head_b->next->value
+					&& tail_a->prev->value < head_b->next->value))
+		rotate_rev_a(head_a, tail_a, 1);
+		/*
 		while (!(head_a->next->value < head_b->next->value
 				&& head_a->next->next->value > head_b->next->value))
 			rotate_rev_a(head_a, tail_a, 1);
+			*/
 	else
+		while (!(head_a->next->value > head_b->next->value
+					&& tail_a->prev->value < head_b->next->value))
+			rotate_a(head_a, tail_a, 1);
+	/*
 		while (!(head_a->next->value < head_b->next->value
 				&& head_a->next->next->value > head_b->next->value))
 			rotate_a(head_a, tail_a, 1);
-	rotate_a(head_a, tail_a, 1);
+			*/
 	push_a(head_a, head_b, tail_b);
 }
 
@@ -160,7 +176,7 @@ void	final_sort(t_node *head_a, t_node *tail_a)
 	int	smallest;
 
 	smallest = smallest_in_list(head_a, tail_a);
-	if (is_reverse(head_a, tail_a, smallest))
+	if (is_reverse_small(head_a, tail_a, smallest))
 		while (!is_sorted(head_a, tail_a))
 			rotate_rev_a(head_a, tail_a, 1);
 	else

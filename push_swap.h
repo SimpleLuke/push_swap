@@ -1,12 +1,11 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
+/*                                                                            */ /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 16:30:44 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 20:24:27 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -447,6 +446,19 @@ int		smallest_in_list(t_node *head, t_node *tail);
 int		largest_in_list(t_node *head, t_node *tail);
 
 /* **************************************************************************
+ * bool	is_reverse_betwwen(t_node *head, t_node *tail, int num)
+ *
+ * Summary of the function:
+ * 
+ * 	This function checks if the rotation needs to be reverse rotating.
+ *
+ * Parameters : The head and tail nodes in the list and the number to determine.
+ *
+ * Return Value : It returns true or false.
+ * **************************************************************************/
+bool	is_reverse_between(t_node *head, t_node *tail, int num);
+
+/* **************************************************************************
  * bool	is_reverse(t_node *head, t_node *tail, int smallest)
  *
  * Summary of the function:
@@ -457,5 +469,5 @@ int		largest_in_list(t_node *head, t_node *tail);
  *
  * Return Value : It returns true or false.
  * **************************************************************************/
-bool	is_reverse(t_node *head, t_node *tail, int smallest);
+bool	is_reverse_small(t_node *head, t_node *tail, int smallest);
 #endif
