@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 08:50:12 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 09:47:42 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 10:10:37 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@
 static void	sa_ra(t_node *head, t_node *tail);
 static void	sa_rra(t_node *head, t_node *tail);
 
+/* **************************************************************************
+ * void	sort_small_size(t_node *head, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function sorts a list with a size of three or less.
+ * 	It outputs the operation intrustions.
+ *
+ * Parameters : The head node and the tail node of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
 void	sort_small_size(t_node *head, t_node *tail)
 {
 	t_node	*top;
@@ -52,12 +64,36 @@ void	sort_small_size(t_node *head, t_node *tail)
 		sa_rra(head, tail);
 }
 
+/* **************************************************************************
+ * static void	sa_ra(t_node *head, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function helps refactoring.
+ * 	It runs swap_a and rotate_a.
+ *
+ * Parameters : The head node and the tail node of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
 static void	sa_ra(t_node *head, t_node *tail)
 {
 	swap_a(head, 1);
 	rotate_a(head, tail, 1);
 }
 
+/* **************************************************************************
+ * static void	sa_rra(t_node *head, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function helps refactoring.
+ * 	It runs swap_a and rotate_rev_a.
+ *
+ * Parameters : The head node and the tail node of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
 static void	sa_rra(t_node *head, t_node *tail)
 {
 	swap_a(head, 1);
