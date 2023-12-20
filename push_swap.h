@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 11:47:52 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 13:22:54 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -398,4 +398,5 @@ bool	is_smallest(t_node *head, t_node *tail, t_node *node);
 bool	is_largest(t_node *head, t_node *tail, t_node *node);
 int		smallest_in_list(t_node *head, t_node *tail);
 int		largest_in_list(t_node *head, t_node *tail);
+bool	is_reverse(t_node *head, t_node *tail, int smallest);
 #endif

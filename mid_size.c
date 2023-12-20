@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 08:50:12 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 12:23:00 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 15:13:27 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ void	sort_mid_size(t_node *head_a, t_node *tail_a,
 		}
 	}
 	*/
+//	(void)smallest;
+//	(void)largest;
+//	(void)tail_b;
+//	smallest = smallest_in_list(head_a, tail_a);
 	while (head_b->next != tail_b)
 	{
 		smallest = smallest_in_list(head_a, tail_a);
@@ -66,26 +70,38 @@ void	sort_mid_size(t_node *head_a, t_node *tail_a,
 		if (head_b->next->value < smallest)
 		{
 			while (head_a->next->value != smallest)
-				rotate_a(head_a, tail_a, 1);
+				rotate_rev_a(head_a, tail_a, 1);
 			push_a(head_a, head_b, tail_b);
 		}
 		else if (head_b->next->value > largest)
 		{
 			while (head_a->next->value != smallest)
-				rotate_a(head_a, tail_a, 1);
+				rotate_rev_a(head_a, tail_a, 1);
 			push_a(head_a, head_b, tail_b);
 			rotate_a(head_a, tail_a, 1);
 		}
 		else
 		{
-			while (!(head_a->next->value < head_b->next->value &&
-					head_a->next->next->value > head_b->next->value))
-				rotate_a(head_a, tail_a, 1);
+			if (is_reverse(head_a, tail_a, head_b->next->value))
+				while (!(head_a->next->value < head_b->next->value &&
+						head_a->next->next->value > head_b->next->value))
+					rotate_rev_a(head_a, tail_a, 1);
+			else
+				while (!(head_a->next->value < head_b->next->value &&
+						head_a->next->next->value > head_b->next->value))
+					rotate_a(head_a, tail_a, 1);
 			rotate_a(head_a, tail_a, 1);
 			push_a(head_a, head_b, tail_b);
 		}
 	}
 
+	smallest = smallest_in_list(head_a, tail_a);
+	if (is_reverse(head_a, tail_a, smallest))
+		while (!is_sorted(head_a, tail_a))
+			rotate_rev_a(head_a, tail_a, 1);
+	else
+		while (!is_sorted(head_a, tail_a))
+			rotate_a(head_a, tail_a, 1);
 	/*
 	while (!is_sorted(head_a, tail_a))
 		rotate_rev_a(head_a, tail_a, 1);
