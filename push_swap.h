@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 09:49:11 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 11:47:52 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -378,4 +378,24 @@ void	rotate_rev_both(t_node *head_a, t_node *tail_a,
  * **************************************************************************/
 void	sort_small_size(t_node *head, t_node *tail);
 
+/* **************************************************************************
+ * void	sort_mid_size(t_node *head_a, t_node *tail_a,
+ * 						t_node *head_b, t_node *tail_b)
+ *
+ * Summary of the function:
+ * 
+ * 	This function sorts a list with a size of five or less.
+ * 	It outputs the operation intrustions.
+ *
+ * Parameters : The head node and the tail node of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	sort_mid_size(t_node *head_a, t_node *tail_a,
+			t_node *head_b, t_node *tail_b);
+
+bool	is_smallest(t_node *head, t_node *tail, t_node *node);
+bool	is_largest(t_node *head, t_node *tail, t_node *node);
+int		smallest_in_list(t_node *head, t_node *tail);
+int		largest_in_list(t_node *head, t_node *tail);
 #endif

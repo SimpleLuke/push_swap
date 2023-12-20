@@ -6,13 +6,15 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:47 by llai              #+#    #+#             */
-/*   Updated: 2023/12/19 13:04:39 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 12:07:52 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 void	init_list(char **int_str, int len, t_node *head, t_node *tail);
 t_node	*create_new_node(int value);
+int		smallest_in_list(t_node *head, t_node *tail);
+int		largest_in_list(t_node *head, t_node *tail);
 
 /* **************************************************************************
  * void	init_list(char **int_str, int len, t_node *head, t_node *tail)
@@ -64,4 +66,36 @@ t_node	*create_new_node(int value)
 	}
 	new_node->value = value;
 	return (new_node);
+}
+
+int		smallest_in_list(t_node *head, t_node *tail)
+{
+	t_node	*curr;
+	int		smallest;
+
+	curr = head->next;
+	smallest = curr->value;
+	while (curr != tail)
+	{
+		if(curr->value <= smallest)
+			smallest = curr->value;
+		curr = curr->next;
+	}
+	return (smallest);
+}
+
+int		largest_in_list(t_node *head, t_node *tail)
+{
+	t_node	*curr;
+	int		largest;
+
+	curr = head->next;
+	largest = curr->value;
+	while (curr != tail)
+	{
+		if(curr->value >= largest)
+			largest = curr->value;
+		curr = curr->next;
+	}
+	return (largest);
 }

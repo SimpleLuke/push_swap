@@ -6,13 +6,15 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:12:58 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 09:36:52 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 11:55:15 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 bool	is_sorted(t_node *head, t_node *tail);
 bool	cmp(t_node *node_1, t_node *node_2);
+bool	is_smallest(t_node *head, t_node *tail, t_node *node);
+bool	is_largest(t_node *head, t_node *tail, t_node *node);
 
 /* **************************************************************************
  * bool	is_sorted(t_node *head, t_node *tail)
@@ -59,4 +61,32 @@ bool	cmp(t_node *node_1, t_node *node_2)
 		return (false);
 	else
 		exit(EXIT_FAILURE);
+}
+
+bool	is_smallest(t_node *head, t_node *tail, t_node *node)
+{
+	t_node *curr;
+
+	curr = head->next;
+	while (curr != tail->prev)
+	{
+		if (node->value > curr->value)
+			return (false);
+		curr = curr->next;
+	}
+	return (true);
+}
+
+bool	is_largest(t_node *head, t_node *tail, t_node *node)
+{
+	t_node *curr;
+
+	curr = head->next;
+	while (curr != tail->prev)
+	{
+		if (node->value < curr->value)
+			return (false);
+		curr = curr->next;
+	}
+	return (true);
 }
