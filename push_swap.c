@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:28:38 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 09:14:17 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 09:57:37 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,10 @@ void	push_swap(t_node *head_a, t_node *tail_a, int len)
 	*/
 	if (len <= 3)
 		sort_small_size(head_a, tail_a);
+	/*
 	ft_printf("DONE:\n");
 	print_list(head_a, tail_a);
 	print_list(head_b, tail_b);
+	*/
 	free_list(head_b, tail_b);
 }
