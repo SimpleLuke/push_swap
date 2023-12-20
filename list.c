@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:47 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 16:17:35 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 16:23:46 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -68,6 +68,17 @@ t_node	*create_new_node(int value)
 	return (new_node);
 }
 
+/* **************************************************************************
+ * int	smallest_in_list(t_node *head, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function finds the smallest value in the list.
+ *
+ * Parameters : The head node and the tail node in the list.
+ *
+ * Return Value : It returns the smallest number in the list.
+ * **************************************************************************/
 int	smallest_in_list(t_node *head, t_node *tail)
 {
 	t_node	*curr;
@@ -84,6 +95,17 @@ int	smallest_in_list(t_node *head, t_node *tail)
 	return (smallest);
 }
 
+/* **************************************************************************
+ * int	largest_in_list(t_node *head, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function finds the largest value in the list.
+ *
+ * Parameters : The head node and the tail node in the list.
+ *
+ * Return Value : It returns the largest number in the list.
+ * **************************************************************************/
 int	largest_in_list(t_node *head, t_node *tail)
 {
 	t_node	*curr;

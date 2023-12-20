@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 08:50:12 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 16:16:15 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 16:38:55 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,19 @@ void	sort_mid_size(t_node *head_a, t_node *tail_a,
 	final_sort(head_a, tail_a);
 }
 
+/* **************************************************************************
+ * void	sort_largest(t_node *head_a, t_node *head_b,
+ *			t_node *tail_a,	t_node *tail_b)
+ *
+ * Summary of the function:
+ * 
+ * 	This function puts the stack b number into stack a with a correct order
+ * 	as if the number is the largest in the list
+ *
+ * Parameters : The head node and the tail node of the both lists.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
 void	sort_largest(t_node *head_a, t_node *head_b,
 			t_node *tail_a,	t_node *tail_b)
 {
@@ -79,6 +92,19 @@ void	sort_largest(t_node *head_a, t_node *head_b,
 	rotate_a(head_a, tail_a, 1);
 }
 
+/* **************************************************************************
+ * void	sort_smallest(t_node *head_a, t_node *head_b,
+ *			t_node *tail_a,	t_node *tail_b)
+ *
+ * Summary of the function:
+ * 
+ * 	This function puts the stack b number into stack a with a correct order
+ * 	as if the number is the smallest in the list
+ *
+ * Parameters : The head node and the tail node of the both lists.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
 void	sort_smallest(t_node *head_a, t_node *head_b,
 			t_node *tail_a,	t_node *tail_b)
 {
@@ -90,6 +116,19 @@ void	sort_smallest(t_node *head_a, t_node *head_b,
 	push_a(head_a, head_b, tail_b);
 }
 
+/* **************************************************************************
+ * void	sort_other(t_node *head_a, t_node *head_b,
+ *			t_node *tail_a,	t_node *tail_b)
+ *
+ * Summary of the function:
+ * 
+ * 	This function puts the stack b number into stack a with a correct order
+ * 	as if the number is not the largest or smallest.
+ *
+ * Parameters : The head node and the tail node of the both lists.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
 void	sort_other(t_node *head_a, t_node *head_b,
 			t_node *tail_a,	t_node *tail_b)
 {
@@ -105,6 +144,17 @@ void	sort_other(t_node *head_a, t_node *head_b,
 	push_a(head_a, head_b, tail_b);
 }
 
+/* **************************************************************************
+ * void	final_sort(t_node *head_a, t_node *tail_a)
+ *
+ * Summary of the function:
+ * 
+ * 	This function sorts the list by rotating/ reverse rotating the list 
+ *
+ * Parameters : The head node and the tail node of the both lists.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
 void	final_sort(t_node *head_a, t_node *tail_a)
 {
 	int	smallest;

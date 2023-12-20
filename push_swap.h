@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 13:22:54 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/20 16:30:44 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -394,9 +394,68 @@ void	sort_small_size(t_node *head, t_node *tail);
 void	sort_mid_size(t_node *head_a, t_node *tail_a,
 			t_node *head_b, t_node *tail_b);
 
+/* **************************************************************************
+ * bool	is_smallest(t_node *head, t_node *tail, t_node *node)
+ *
+ * Summary of the function:
+ * 
+ * 	This function checks if the node is the smallest in the list.
+ *
+ * Parameters : The head and tail nodes in the list and a target node.
+ *
+ * Return Value : It returns true or false.
+ * **************************************************************************/
 bool	is_smallest(t_node *head, t_node *tail, t_node *node);
+
+/* **************************************************************************
+ * bool	is_largest(t_node *head, t_node *tail, t_node *node)
+ *
+ * Summary of the function:
+ * 
+ * 	This function checks if the node is the largest in the list.
+ *
+ * Parameters : The head and tail nodes in the list and a target node.
+ *
+ * Return Value : It returns true or false.
+ * **************************************************************************/
 bool	is_largest(t_node *head, t_node *tail, t_node *node);
+
+/* **************************************************************************
+ * int	smallest_in_list(t_node *head, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function finds the smallest value in the list.
+ *
+ * Parameters : The head node and the tail node in the list.
+ *
+ * Return Value : It returns the smallest number in the list.
+ * **************************************************************************/
 int		smallest_in_list(t_node *head, t_node *tail);
+
+/* **************************************************************************
+ * int	largest_in_list(t_node *head, t_node *tail)
+ *
+ * Summary of the function:
+ * 
+ * 	This function finds the largest value in the list.
+ *
+ * Parameters : The head node and the tail node in the list.
+ *
+ * Return Value : It returns the largest number in the list.
+ * **************************************************************************/
 int		largest_in_list(t_node *head, t_node *tail);
+
+/* **************************************************************************
+ * bool	is_reverse(t_node *head, t_node *tail, int smallest)
+ *
+ * Summary of the function:
+ * 
+ * 	This function checks if the rotation needs to be reverse rotating.
+ *
+ * Parameters : The head and tail nodes in the list and the number to determine.
+ *
+ * Return Value : It returns true or false.
+ * **************************************************************************/
 bool	is_reverse(t_node *head, t_node *tail, int smallest);
 #endif
