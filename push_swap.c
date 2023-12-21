@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:28:38 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 20:25:07 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/21 13:43:02 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	push_swap(t_node *head_a, t_node *tail_a, int len)
 		sort_small_size(head_a, tail_a);
 	else if (len <= 5)
 		sort_mid_size(head_a, tail_a, head_b, tail_b);
+	else if (len <= 100)
+		sort_large_size(head_a, tail_a, head_b, tail_b);
 	/*
 	ft_printf("DONE:\n");
 	print_list(head_a, tail_a);

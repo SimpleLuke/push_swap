@@ -6,13 +6,14 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:47 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 16:23:46 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/21 13:40:58 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
 void	init_list(char **int_str, int len, t_node *head, t_node *tail);
 t_node	*create_new_node(int value);
+int		list_size(t_node *head, t_node *tail);
 int		smallest_in_list(t_node *head, t_node *tail);
 int		largest_in_list(t_node *head, t_node *tail);
 
@@ -66,6 +67,21 @@ t_node	*create_new_node(int value)
 	}
 	new_node->value = value;
 	return (new_node);
+}
+
+int		list_size(t_node *head, t_node *tail)
+{
+	t_node	*curr;
+	int		count;
+
+	count = 0;
+	curr = head->next;
+	while (curr != tail)
+	{
+		count++;
+		curr = curr->next;
+	}
+	return (count);
 }
 
 /* **************************************************************************

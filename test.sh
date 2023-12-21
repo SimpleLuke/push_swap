@@ -1,5 +1,5 @@
 # Generate 5 random values and store them in the ARG variable
-ARG=$(seq 1 5 | shuf | tr '\n' ' ')
+ARG=$(seq 1 20 | shuf | tr '\n' ' ')
 
 echo "$ARG"
 

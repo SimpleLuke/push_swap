@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/20 21:11:27 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/21 13:42:40 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,7 @@ typedef struct s_node
  * **************************************************************************/
 void	check_valid_arg(char **int_str, int len);
 
-/* **************************************************************************
- * size_t stack_size(char **int_str)
- *
- * Summary of the function:
- * 
- * 	This function finds the size of the input integers,
- * 	it helps to manipulate the stacks/lists.
- *
- * Parameters : array of string - index 0 would be the programme name.
- *
- * Return Value : Positive integer as the size.
- * **************************************************************************/
-size_t	stack_size(char **int_str);
+int		list_size(t_node *head, t_node *tail);
 
 /* **************************************************************************
  * t_node	*create_new_node(int value)
@@ -394,6 +382,21 @@ void	sort_small_size(t_node *head, t_node *tail);
 void	sort_mid_size(t_node *head_a, t_node *tail_a,
 			t_node *head_b, t_node *tail_b);
 
+/* **************************************************************************
+ * void	sort_large_size(t_node *head_a, t_node *tail_a,
+ * 						t_node *head_b, t_node *tail_b)
+ *
+ * Summary of the function:
+ * 
+ * 	This function sorts a list with a size of 100 or less.
+ * 	It outputs the operation intrustions.
+ *
+ * Parameters : The head node and the tail node of the list.
+ *
+ * Return Value : It returns nothing.
+ * **************************************************************************/
+void	sort_large_size(t_node *head, t_node *tail,
+			t_node *head_b, t_node *tail_b);
 /* **************************************************************************
  * bool	is_smallest(t_node *head, t_node *tail, t_node *node)
  *

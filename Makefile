@@ -12,7 +12,8 @@ SRC = push_swap.c \
 	  rotate_rev.c \
 	  reverse.c \
 	  small_size.c \
-	  mid_size.c
+	  mid_size.c \
+	  large_size.c
 OBJ = $(SRC:.c=.o)
 HEADER = push_swap.h \
 		 ./libft/libft.h
