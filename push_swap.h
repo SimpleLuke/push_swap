@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/21 16:14:43 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/21 19:25:27 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct s_node
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
+
+typedef struct s_chunk
+{
+	int len;
+	int arr[];
+}	t_chunk;
 
 /* **************************************************************************
  * void	check_valid_arg(char **int_str, int len)
@@ -475,9 +481,14 @@ bool	is_reverse_between(t_node *head, t_node *tail, int num);
  * **************************************************************************/
 bool	is_reverse_small(t_node *head, t_node *tail, int smallest);
 
-int	*create_chunk(t_node *head, t_node *tail);
-void	fill_chunk(int *chunk,int len, t_node *head);
-int	*check_chunk(int *chunk, int len, t_node *head, t_node *tail);
-int		large_in_chunk(int *chunk, int len);
-bool	is_in_chunk(int target, int *chunk, int len);
+t_chunk		*create_chunk(t_node *head, t_node *tail);
+void	fill_chunk(t_chunk *chunk, t_node *head);
+t_chunk		*check_chunk(t_chunk *chunk, t_node *head, t_node *tail);
+int		large_in_chunk(t_chunk *chunk);
+bool	is_in_chunk(int target, t_chunk *chunk);
+bool	chunk_in_stack(t_node *head, t_node *tail, t_chunk *chunk);
+
+int		steps_from_top(t_chunk *chunk, t_node *head, t_node *tail, int *num);
+int		steps_from_bot(t_chunk *chunk, t_node *head, t_node *tail, int *num);
+void	rotate_target(t_node *head, t_node *tail, int step, bool rev);
 #endif

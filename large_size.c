@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:51:25 by llai              #+#    #+#             */
-/*   Updated: 2023/12/21 17:06:39 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/21 19:11:45 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ void	sort_large_size(t_node *head, t_node *tail,
 			t_node *head_b, t_node *tail_b);
 void	sort_first_chunk(t_node *head, t_node *tail,
 			t_node *head_b, t_node *tail_b);
-int		steps_from_top(int *chunk, t_node *head, t_node *tail, int *num);
-int		steps_from_bot(int *chunk, t_node *head, t_node *tail, int *num);
-void	rotate_target(t_node *head, t_node *tail, int step, bool rev);
+void	target_to_b(t_node *head_a, t_node *tail_a,
+			t_node *head_b, t_node *tail_b);
 
 /* **************************************************************************
  * void	sort_large_size(t_node *head_a, t_node *tail_a,
@@ -49,27 +48,34 @@ void	sort_large_size(t_node *head_a, t_node *tail_a,
 {
 	(void)head_b;
 	(void)tail_b;
+	(void)head_a;
+	(void)tail_a;
 	sort_first_chunk(head_a, tail_a, head_b, tail_b);
 }
 
-void	sort_first_chunk(t_node *head, t_node *tail,
+void	sort_first_chunk(t_node *head_a, t_node *tail_a,
 			t_node *head_b, t_node *tail_b)
 {
-	int	*chunk;
+	t_chunk	*chunk;
 	int	top;
 	int	bot;
 	int	top_steps;
 	int	bot_steps;
 
-	(void)head_b;
-	(void)tail_b;
-	chunk = create_chunk(head, tail);
-	top_steps = steps_from_top(chunk, head, tail, &top);
-	bot_steps = steps_from_bot(chunk, head, tail, &bot);
-	if (top_steps < bot_steps)
-		rotate_target(head, tail, top_steps, false);
-	else
-		rotate_target(head, tail, bot_steps, true);
+	//(void)head_b;
+	//(void)tail_b;
+	chunk = create_chunk(head_a, tail_a);
+	while (chunk_in_stack(head_a, tail_a, chunk))
+	{
+		top_steps = steps_from_top(chunk, head_a, tail_a, &top);
+		bot_steps = steps_from_bot(chunk, head_a, tail_a, &bot);
+		if (top_steps < bot_steps)
+			rotate_target(head_a, tail_a, top_steps, false);
+		else
+			rotate_target(head_a, tail_a, bot_steps, true);
+		target_to_b(head_a, tail_a, head_b, tail_b);
+	}
+	
 	/*
 	ft_printf("TOP STEPS: %d\n", steps_from_top(chunk, head, tail, &top));
 	ft_printf("BOT STEPS: %d\n", steps_from_bot(chunk, head, tail, &bot));
@@ -79,50 +85,19 @@ void	sort_first_chunk(t_node *head, t_node *tail,
 	free(chunk);
 }
 
-void	rotate_target(t_node *head, t_node *tail, int step, bool rev)
+void	target_to_b(t_node *head_a, t_node *tail_a,
+			t_node *head_b, t_node *tail_b)
 {
-	while (step > 0)
+	if (head_b->next != tail_b && is_largest(head_b, tail_b, head_a->next) )
 	{
-		if (rev)
-			rotate_rev_a(head, tail, 1);
-		else
-			rotate_a(head, tail, 1);
-		step--;
+		push_b(head_a, head_b, tail_a);
 	}
-}
-
-int		steps_from_top(int *chunk, t_node *head, t_node *tail, int *num)
-{
-	t_node	*curr;
-	int		steps;
-
-	steps = 0;
-	curr = head->next;
-	while (curr != tail)
+	else if (head_b->next != tail_b && is_smallest(head_b, tail_b, head_a->next))
 	{
-		if (is_in_chunk(curr->value, chunk, list_size(head, tail)))
-			break ;
-		steps++;
-		curr = curr->next;
+		push_b(head_a, head_b, tail_a);
 	}
-	*num = curr->value;
-	return (steps);
-}
-
-int		steps_from_bot(int *chunk, t_node *head, t_node *tail, int *num)
-{
-	t_node	*curr;
-	int		steps;
-
-	steps = 0;
-	curr = tail->prev;
-	while (curr != head)
+	else
 	{
-		if (is_in_chunk(curr->value, chunk, list_size(head, tail)))
-			break ;
-		steps++;
-		curr = curr->prev;
+		push_b(head_a, head_b, tail_a);
 	}
-	*num = curr->value;
-	return (steps + 1);
 }

@@ -14,7 +14,8 @@ SRC = push_swap.c \
 	  small_size.c \
 	  mid_size.c \
 	  large_size.c \
-	  chunk_utils.c
+	  chunk_utils.c \
+	  chunk_utils2.c
 OBJ = $(SRC:.c=.o)
 HEADER = push_swap.h \
 		 ./libft/libft.h
