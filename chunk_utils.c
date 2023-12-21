@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 15:51:03 by llai              #+#    #+#             */
-/*   Updated: 2023/12/21 19:25:43 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/21 19:41:22 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ t_chunk	*create_chunk(t_node *head, t_node *tail)
 	size_t	total_size;
 	t_chunk	*chunk;
 
-	size = list_size(head, tail);
-	total_size = sizeof(t_chunk) + sizeof(int) * size; chunk = malloc(total_size);
+	size = list_size(head, tail) / 5;
+	total_size = sizeof(t_chunk) + sizeof(int) * size;
+	chunk = malloc(total_size);
 	if (!chunk)
 		exit(EXIT_FAILURE);
 	chunk->len = size;
