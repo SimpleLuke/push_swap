@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 12:51:25 by llai              #+#    #+#             */
-/*   Updated: 2023/12/21 14:46:05 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/21 17:06:39 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@
 
 #include "push_swap.h"
 
-int	*create_chunk(t_node *head, t_node *tail);
-void	fill_chunk(int *chunk,int len, t_node *head);
-int	*check_chunk(int *chunk, int len, t_node *head, t_node *tail);
-int		large_in_chunk(int *chunk, int len);
+void	sort_large_size(t_node *head, t_node *tail,
+			t_node *head_b, t_node *tail_b);
+void	sort_first_chunk(t_node *head, t_node *tail,
+			t_node *head_b, t_node *tail_b);
+int		steps_from_top(int *chunk, t_node *head, t_node *tail, int *num);
+int		steps_from_bot(int *chunk, t_node *head, t_node *tail, int *num);
+void	rotate_target(t_node *head, t_node *tail, int step, bool rev);
 
 /* **************************************************************************
  * void	sort_large_size(t_node *head_a, t_node *tail_a,
@@ -41,103 +44,85 @@ int		large_in_chunk(int *chunk, int len);
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	sort_large_size(t_node *head, t_node *tail,
+void	sort_large_size(t_node *head_a, t_node *tail_a,
+			t_node *head_b, t_node *tail_b)
+{
+	(void)head_b;
+	(void)tail_b;
+	sort_first_chunk(head_a, tail_a, head_b, tail_b);
+}
+
+void	sort_first_chunk(t_node *head, t_node *tail,
 			t_node *head_b, t_node *tail_b)
 {
 	int	*chunk;
-	int	len;
-	int	i;
+	int	top;
+	int	bot;
+	int	top_steps;
+	int	bot_steps;
 
 	(void)head_b;
 	(void)tail_b;
-	len = (list_size(head, tail)) / 5;
 	chunk = create_chunk(head, tail);
-	i = 0;
-	while (i < len)
+	top_steps = steps_from_top(chunk, head, tail, &top);
+	bot_steps = steps_from_bot(chunk, head, tail, &bot);
+	if (top_steps < bot_steps)
+		rotate_target(head, tail, top_steps, false);
+	else
+		rotate_target(head, tail, bot_steps, true);
+	/*
+	ft_printf("TOP STEPS: %d\n", steps_from_top(chunk, head, tail, &top));
+	ft_printf("BOT STEPS: %d\n", steps_from_bot(chunk, head, tail, &bot));
+	ft_printf("PUSH NUM: %d\n", top);
+	ft_printf("PUSH NUM: %d\n", bot);
+	*/
+	free(chunk);
+}
+
+void	rotate_target(t_node *head, t_node *tail, int step, bool rev)
+{
+	while (step > 0)
 	{
-		ft_printf("%d\n", chunk[i]);
-		i++;
+		if (rev)
+			rotate_rev_a(head, tail, 1);
+		else
+			rotate_a(head, tail, 1);
+		step--;
 	}
 }
 
-int	*create_chunk(t_node *head, t_node *tail)
-{
-	int		len;
-	int		size;
-	int		*chunk;
-
-	size = list_size(head, tail);
-	len = size / 5;
-	chunk = malloc(sizeof(int) * len);
-	if (!chunk)
-		exit(EXIT_FAILURE);
-	fill_chunk(chunk, len, head);
-	chunk = check_chunk(chunk, len, head, tail);
-	return (chunk);
-}
-
-void	fill_chunk(int *chunk,int len, t_node *head)
+int		steps_from_top(int *chunk, t_node *head, t_node *tail, int *num)
 {
 	t_node	*curr;
-	int		i;
+	int		steps;
 
-	i = 0;
+	steps = 0;
 	curr = head->next;
-	while (i < len)
-	{
-		chunk[i] = curr->value;
-		curr = curr->next;
-		i++;
-	}
-}
-
-int	*check_chunk(int *chunk, int len, t_node *head, t_node *tail)
-{
-	t_node	*curr;
-	int		i;
-	int		temp_idx;
-	//int		temp;
-
-	i = 0;
-	temp_idx = -1;
-	curr = head->next;
-	while (i++ < len)
-		curr = curr->next;
 	while (curr != tail)
 	{
-		i = 0;
-		while (i < len)
-		{
-			if (curr->value < chunk[i])
-			{
-				temp_idx = large_in_chunk(chunk, len);
-				chunk[temp_idx] = curr->value;
-				break ;
-			}
-			i++;
-		}
+		if (is_in_chunk(curr->value, chunk, list_size(head, tail)))
+			break ;
+		steps++;
 		curr = curr->next;
 	}
-	return (chunk);
+	*num = curr->value;
+	return (steps);
 }
 
-int		large_in_chunk(int *chunk, int len)
+int		steps_from_bot(int *chunk, t_node *head, t_node *tail, int *num)
 {
-	int	i;
-	int	large_idx;
-	int	large;
+	t_node	*curr;
+	int		steps;
 
-	i = 0;
-	large_idx = -1;
-	large = chunk[0];
-	while (i < len)
+	steps = 0;
+	curr = tail->prev;
+	while (curr != head)
 	{
-		if (chunk[i] > large)
-		{
-			large = chunk[i];
-			large_idx = i;
-		}
-		i++;
+		if (is_in_chunk(curr->value, chunk, list_size(head, tail)))
+			break ;
+		steps++;
+		curr = curr->prev;
 	}
-	return (large_idx);
+	*num = curr->value;
+	return (steps + 1);
 }

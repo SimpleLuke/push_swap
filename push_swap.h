@@ -6,7 +6,7 @@
 /*   By: llai <llai@student.42london.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:35:00 by llai              #+#    #+#             */
-/*   Updated: 2023/12/21 13:42:40 by llai             ###   ########.fr       */
+/*   Updated: 2023/12/21 16:14:43 by llai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -395,7 +395,7 @@ void	sort_mid_size(t_node *head_a, t_node *tail_a,
  *
  * Return Value : It returns nothing.
  * **************************************************************************/
-void	sort_large_size(t_node *head, t_node *tail,
+void	sort_large_size(t_node *head_a, t_node *tail_a,
 			t_node *head_b, t_node *tail_b);
 /* **************************************************************************
  * bool	is_smallest(t_node *head, t_node *tail, t_node *node)
@@ -474,4 +474,10 @@ bool	is_reverse_between(t_node *head, t_node *tail, int num);
  * Return Value : It returns true or false.
  * **************************************************************************/
 bool	is_reverse_small(t_node *head, t_node *tail, int smallest);
+
+int	*create_chunk(t_node *head, t_node *tail);
+void	fill_chunk(int *chunk,int len, t_node *head);
+int	*check_chunk(int *chunk, int len, t_node *head, t_node *tail);
+int		large_in_chunk(int *chunk, int len);
+bool	is_in_chunk(int target, int *chunk, int len);
 #endif
